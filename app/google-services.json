@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "852941195387",
+    "firebase_url": "https://imageupload-4c55a.firebaseio.com",
+    "project_id": "imageupload-4c55a",
+    "storage_bucket": "imageupload-4c55a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852941195387:android:4a3f95cae151695f",
+        "android_client_info": {
+          "package_name": "org.snowcorp.imageupload"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852941195387-ps780faa6c49sqrkech8e60uhifi6hq6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.snowcorp.imageupload",
+            "certificate_hash": "39f25073e96b80e73dbb0fecbe8ae6a1652ba36a"
+          }
+        },
+        {
+          "client_id": "852941195387-5cr5gs0t72uf4ov47ci2q9ai4ohe7ph8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzXWly-bM6LyOKZZWleFSA2vQOvqFsQhQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852941195387-5cr5gs0t72uf4ov47ci2q9ai4ohe7ph8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
