@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private Button btnChoose, btnUpload;
     private EditText editText;
     private ProgressBar progressBar;
-    String currentdate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+    String datePosted = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
     public static String BASE_URL = "https://thinhictk58.000webhostapp.com/upload.php";
     static final int PICK_IMAGE_REQUEST = 1;
     String filePath;
-
+    String description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +55,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                description = editText.getText().toString();
+            }
+        });
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (filePath != null) {
-                    imageUpload(filePath);
+                    imageUpload(filePath,description,datePosted);
                 } else {
                     Toast.makeText(getApplicationContext(), "Image not selected!", Toast.LENGTH_LONG).show();
                 }
@@ -96,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void imageUpload(final String imagePath) {
+    private void imageUpload(final String imagePath, String description, String datePosted) {
 
         SimpleMultiPartRequest smr = new SimpleMultiPartRequest(Request.Method.POST, BASE_URL,
                 new Response.Listener<String>() {
@@ -121,10 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        String description = editText.getText().toString();
-        smr.addFile("image", imagePath);
         smr.addStringParam("description", description);
-	    smr.addStringParam("datePosted", currentdate);
+        smr.addStringParam("datePosted", datePosted);
+        smr.addFile("image", imagePath);
         MyApplication.getInstance().addToRequestQueue(smr);
 
     }
