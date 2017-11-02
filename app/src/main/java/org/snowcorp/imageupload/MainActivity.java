@@ -11,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import java.util.Calendar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -28,8 +30,9 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     private Button btnChoose, btnUpload;
+    private EditText editText;
     private ProgressBar progressBar;
-
+    String currentdate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
     public static String BASE_URL = "https://thinhictk58.000webhostapp.com/upload.php";
     static final int PICK_IMAGE_REQUEST = 1;
     String filePath;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView);
         btnChoose = (Button) findViewById(R.id.button_choose);
+        editText = (EditText) findViewById(R.id.edit_text);
         btnUpload = (Button) findViewById(R.id.button_upload);
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 imageBrowse();
             }
         });
+
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,8 +121,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
+        String description = editText.getText().toString();
         smr.addFile("image", imagePath);
+        smr.addStringParam("description", description);
+	    smr.addStringParam("datePosted", currentdate);
         MyApplication.getInstance().addToRequestQueue(smr);
 
     }

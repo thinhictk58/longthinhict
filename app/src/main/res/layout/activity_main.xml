@@ -36,6 +36,12 @@
         android:padding="5dp"
         android:layout_margin="20dp"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text"
+        android:id="@+id/edit_text"/>
+
     <Button
         android:id="@+id/button_upload"
         android:layout_width="wrap_content"
